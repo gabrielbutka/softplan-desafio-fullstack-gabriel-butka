@@ -1,0 +1,44 @@
+.layout .ant-layout {
+  min-height: 100vh;
+}
+
+.layout .app-logo {
+  text-align: center;
+  height: 32px;
+  margin: 16px;
+}
+
+.layout .app-logo > img {
+  width: 90%;
+}
+
+.layout .ant-layout-header {
+  background: #fff;
+  padding: 0;
+}
+
+.layout .ant-page-header {
+  padding: 10px 20px;
+}
+
+.layout .ant-page-header-heading-sub-title {
+  margin-top: 4px;
+}
+
+.layout .ant-page-header-heading-extra {
+  margin-top: 10px;
+}
+
+.layout .ant-layout-content {
+  margin: 24px 16px 0;
+}
+
+.layout .app-content {
+  background: #fff;
+  padding: 24px;
+  min-height: 100%;
+}
+
+.layout .ant-layout-footer {
+  text-align: center;
+}

@@ -1,6 +1,8 @@
 package br.com.gabriel.butka.backend.entity;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,21 +12,24 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@EqualsAndHashCode(of = {"processo", "usuario"}, callSuper = false)
+@Getter
+@Setter
+@EqualsAndHashCode(of = {"processo", "usuario"}, callSuper = true)
 public class Parecer extends BaseEntity {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "process_id")
+    @JoinColumn(name = "processo_id")
     private Processo processo;
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
+    @NotNull
     @Size(max = 1_000)
-    @Column(name = "parecer")
-    private String parecer;
+    @Column(name = "descricao")
+    private String descricao;
 
 }

@@ -4,6 +4,8 @@ import br.com.gabriel.butka.backend.entity.BaseEntity;
 import br.com.gabriel.butka.backend.repository.BaseRepository;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public abstract class BaseService<T extends BaseEntity, R extends BaseRepository<T, Long>> {
 
@@ -13,7 +15,14 @@ public abstract class BaseService<T extends BaseEntity, R extends BaseRepository
         return getRepository().findAll();
     }
 
-    public T findById(Long id) {
+    public List<T> findAllById(List<Long> ids) {
+        return getRepository().findAllById(ids);
+    }
+
+    public Optional<T> findById(Long id) {
+        if (Objects.isNull(id)) {
+            return Optional.empty();
+        }
         return getRepository().findById(id);
     }
 

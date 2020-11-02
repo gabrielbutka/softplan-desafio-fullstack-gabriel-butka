@@ -1,6 +1,11 @@
 package br.com.gabriel.butka.backend.entity;
 
 import br.com.gabriel.butka.backend.enums.TipoUsuario;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +17,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
+@Getter
+@Setter
+@EqualsAndHashCode(of = "email", callSuper = true)
 public class Usuario extends BaseEntity {
 
     @NotBlank
@@ -26,18 +34,35 @@ public class Usuario extends BaseEntity {
     private String email;
 
     @NotBlank
-    @Size(max = 32)
+    @Size(max = 60)
     @Column(name = "senha")
     private String senha;
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Size(max = 20)
     @Column(name = "tipo")
     private TipoUsuario tipo;
 
     @NotNull
     @Column(name = "ativo")
-    private boolean ativo;
+    private boolean ativo = true;
+
+    public UserDetails toUserDetails() {
+        var user = User.builder();
+        user.username(email);
+        user.password(senha);
+        user.roles(tipo.getChave());
+        return user.build();
+    }
+
+    public Usuario ativar() {
+        ativo = true;
+        return this;
+    }
+
+    public Usuario inativar() {
+        ativo = false;
+        return this;
+    }
 
 }

@@ -1,6 +1,9 @@
 package br.com.gabriel.butka.backend.entity;
 
 import br.com.gabriel.butka.backend.enums.StatusProcesso;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +12,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,7 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = true)
 public class Processo extends BaseEntity {
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
 
     @NotBlank
     @Size(max = 100)
@@ -31,17 +43,43 @@ public class Processo extends BaseEntity {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    @Size(max = 20)
     @Column(name = "status")
     private StatusProcesso status;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "processo_interessado",
-            joinColumns = @JoinColumn(name = "processo_id"),
-            inverseJoinColumns = @JoinColumn(name = "usuario_id"))
+            inverseJoinColumns = @JoinColumn(name = "usuario_id"),
+            joinColumns = @JoinColumn(name = "processo_id"))
     private List<Usuario> interessados = new ArrayList<>();
 
-    @OneToMany(mappedBy = "processo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "processo", cascade = CascadeType.ALL)
     private List<Parecer> pareceres = new ArrayList<>();
+
+    public boolean isPendente() {
+        return status.isPendente();
+    }
+
+    public boolean temParecer(Usuario usuario) {
+        return pareceres.stream().anyMatch(parecer -> parecer.getUsuario().equals(usuario));
+    }
+
+    public boolean temInteressado(Usuario usuario) {
+        return interessados.contains(usuario);
+    }
+
+    public boolean temParecerPendente() {
+        return interessados.stream().anyMatch(interessado -> !temParecer(interessado));
+    }
+
+    public void addParecer(Parecer parecer) {
+        pareceres.add(parecer);
+        if (!temParecerPendente()) {
+            finalizar();
+        }
+    }
+
+    public void finalizar() {
+        status = StatusProcesso.FINALIZADO;
+    }
 
 }
