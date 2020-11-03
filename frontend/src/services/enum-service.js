@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 class EnumService {
-  tiposUsuario() {
+  getTiposUsuario() {
     return axios.get('/enum/tiposUsuario');
   }
 
-  statusProcesso() {
+  getStatusProcesso() {
     return axios.get('/enum/statusProcesso');
   }
 }

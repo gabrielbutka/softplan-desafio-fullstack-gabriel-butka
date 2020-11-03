@@ -1,0 +1,212 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2020-11-03 18:53-0300\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: pt-br\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/screens/processo/processo-list.js:131
+#: src/screens/usuario/usuario-list.js:135
+msgid "Acões"
+msgstr "Acões"
+
+#: src/screens/processo/processo-form.js:71
+#: src/screens/processo/processo-list.js:94
+#: src/screens/usuario/usuario-form.js:66
+#: src/screens/usuario/usuario-list.js:98
+msgid "Adicionar"
+msgstr "Adicionar"
+
+#: src/constants/menus.js:28
+msgid "Adicionar Processo"
+msgstr "Adicionar Processo"
+
+#: src/constants/menus.js:16
+msgid "Adicionar Usuário"
+msgstr "Adicionar Usuário"
+
+#: src/screens/processo/processo-form.js:94
+#: src/screens/processo/processo-list.js:105
+msgid "Assunto"
+msgstr "Assunto"
+
+#: src/screens/usuario/usuario-list.js:160
+msgid "Ativar"
+msgstr "Ativar"
+
+#: src/screens/usuario/usuario-list.js:128
+msgid "Ativo"
+msgstr "Ativo"
+
+#: src/screens/processo/processo-list.js:48
+#: src/screens/usuario/usuario-list.js:37
+#: src/screens/usuario/usuario-list.js:53
+msgid "Cancelar"
+msgstr "Cancelar"
+
+#: src/screens/processo/processo-list.js:45
+#: src/screens/usuario/usuario-list.js:34
+#: src/screens/usuario/usuario-list.js:50
+msgid "Confirmação"
+msgstr "Confirmação"
+
+#: src/screens/processo/processo-list.js:126
+msgid "Criação"
+msgstr "Criação"
+
+#: src/screens/processo/processo-form.js:100
+msgid "Descrição"
+msgstr "Descrição"
+
+#: src/screens/login/login.js:51
+#: src/screens/usuario/usuario-form.js:85
+#: src/screens/usuario/usuario-list.js:115
+msgid "E-mail"
+msgstr "E-mail"
+
+#: src/screens/processo/processo-form.js:71
+#: src/screens/processo/processo-list.js:142
+#: src/screens/usuario/usuario-form.js:66
+#: src/screens/usuario/usuario-list.js:143
+msgid "Editar"
+msgstr "Editar"
+
+#: src/screens/login/login.js:65
+msgid "Entrar"
+msgstr "Entrar"
+
+#: src/screens/processo/processo-list.js:152
+msgid "Excluir"
+msgstr "Excluir"
+
+#: src/screens/processo/processo-list.js:81
+#: src/screens/usuario/usuario-list.js:85
+msgid "Filtrar"
+msgstr "Filtrar"
+
+#: src/screens/usuario/usuario-list.js:151
+msgid "Inativar"
+msgstr "Inativar"
+
+#: src/screens/processo/processo-form.js:112
+#: src/screens/processo/processo-list.js:111
+#: src/screens/processo/processo-view.js:107
+msgid "Interessados"
+msgstr "Interessados"
+
+#: src/screens/processo/processo-list.js:73
+#: src/screens/usuario/usuario-list.js:77
+msgid "Listar"
+msgstr "Listar"
+
+#: src/constants/menus.js:22
+msgid "Listar Processos"
+msgstr "Listar Processos"
+
+#: src/constants/menus.js:10
+msgid "Listar Usuários"
+msgstr "Listar Usuários"
+
+#: src/screens/layout.js:40
+msgid "Logout"
+msgstr "Logout"
+
+#: src/screens/layout.js:64
+msgid "MVP Gerenciador de Processos • Softplan • 2020 • Gabriel Butka"
+msgstr "MVP Gerenciador de Processos • Softplan • 2020 • Gabriel Butka"
+
+#: src/screens/usuario/usuario-form.js:78
+#: src/screens/usuario/usuario-list.js:109
+msgid "Nome"
+msgstr "Nome"
+
+#: src/utils/utils.js:57
+msgid "Não"
+msgstr "Não"
+
+#: src/screens/processo/processo-view.js:159
+msgid "Pareceres"
+msgstr "Pareceres"
+
+#: src/screens/processo/processo-form.js:88
+msgid "Processo"
+msgstr "Processo"
+
+#: src/screens/processo/processo-view.js:83
+msgid "Processo: #{0}"
+msgstr "Processo: #{0}"
+
+#: src/screens/processo/processo-form.js:69
+#: src/screens/processo/processo-list.js:72
+#: src/screens/processo/processo-view.js:72
+msgid "Processos"
+msgstr "Processos"
+
+#: src/screens/login/login.js:68
+#: src/screens/processo/processo-form.js:130
+#: src/screens/processo/processo-view.js:144
+#: src/screens/usuario/usuario-form.js:111
+msgid "Resetar"
+msgstr "Resetar"
+
+#: src/screens/processo/processo-form.js:127
+#: src/screens/processo/processo-view.js:141
+#: src/screens/usuario/usuario-form.js:108
+msgid "Salvar"
+msgstr "Salvar"
+
+#: src/screens/login/login.js:58
+#: src/screens/usuario/usuario-form.js:91
+msgid "Senha"
+msgstr "Senha"
+
+#: src/screens/processo/processo-view.js:131
+msgid "Seu parecer sobre o processo"
+msgstr "Seu parecer sobre o processo"
+
+#: src/screens/processo/processo-list.js:47
+#: src/screens/usuario/usuario-list.js:36
+#: src/screens/usuario/usuario-list.js:52
+#: src/utils/utils.js:57
+msgid "Sim"
+msgstr "Sim"
+
+#: src/screens/processo/processo-form.js:108
+#: src/screens/processo/processo-list.js:117
+msgid "Status"
+msgstr "Status"
+
+#: src/screens/usuario/usuario-list.js:35
+msgid "Tem certeza que deseja ativar o usuário?"
+msgstr "Tem certeza que deseja ativar o usuário?"
+
+#: src/screens/processo/processo-list.js:46
+msgid "Tem certeza que deseja excluir o processo?"
+msgstr "Tem certeza que deseja excluir o processo?"
+
+#: src/screens/usuario/usuario-list.js:51
+msgid "Tem certeza que deseja inativar o usuário?"
+msgstr "Tem certeza que deseja inativar o usuário?"
+
+#: src/screens/usuario/usuario-form.js:97
+#: src/screens/usuario/usuario-list.js:121
+msgid "Tipo"
+msgstr "Tipo"
+
+#: src/screens/usuario/usuario-form.js:64
+#: src/screens/usuario/usuario-list.js:76
+msgid "Usuários"
+msgstr "Usuários"
+
+#: src/screens/processo/processo-list.js:160
+#: src/screens/processo/processo-view.js:74
+msgid "Visualizar"
+msgstr "Visualizar"

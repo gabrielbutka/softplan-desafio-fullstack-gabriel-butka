@@ -31,12 +31,11 @@ public class ProcessoService extends BaseService<Processo, ProcessoRepository> {
         });
     }
 
-    public List<Processo> findAllByUsuarioLogado() {
-        var usuarioLogado = usuarioService.getUsuarioLogado();
-        if (usuarioLogado.getTipo().isTriador()) {
-            return repository.findAllByUsuario(usuarioLogado);
+    public List<Processo> findAllByUsuario(Usuario usuario) {
+        if (usuario.getTipo().isTriador()) {
+            return repository.findAllByUsuario(usuario);
         }
-        return findAllPendentesByUsuario(usuarioLogado);
+        return findAllPendentesByUsuario(usuario);
     }
 
     public List<Processo> findAllPendentesByUsuario(Usuario usuario) {

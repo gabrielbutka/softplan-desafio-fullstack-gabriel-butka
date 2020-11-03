@@ -15,6 +15,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem('user');
+    window.location.reload();
   }
 
   isLogged() {
@@ -22,7 +23,7 @@ class AuthService {
   }
 
   getToken() {
-    return !this.isLogged() ? null : this.getUser().token;
+    return this.isLogged() ? this.getUser().token : null;
   }
 
   hasRole(roles) {
@@ -30,7 +31,13 @@ class AuthService {
   }
 
   getRoles() {
-    return this.getUser().authorities.map(({ authority }) => authority);
+    return this.isLogged()
+      ? this.getUser().authorities.map(({ authority }) => authority)
+      : [];
+  }
+
+  getUserName() {
+    return this.isLogged() ? this.getUser().username : null;
   }
 
   getUser() {

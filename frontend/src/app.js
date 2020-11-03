@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 import {Routes} from './constants';
 import {Error} from './screens';
 import {AuthService} from './services';
@@ -18,7 +18,7 @@ const App = () => (
             if (roles.length === 0 || AuthService.hasRole(roles)) {
               return <Component {...props} />;
             }
-            return <Error {...props} />;
+            return <Redirect to={Routes.LOGIN.path} />;
           }}
         />
       );

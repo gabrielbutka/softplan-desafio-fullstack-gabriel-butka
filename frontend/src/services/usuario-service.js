@@ -1,15 +1,15 @@
 import axios from 'axios';
 
 class UsuarioService {
-  todos() {
+  getTodos() {
     return axios.get('/usuario/todos');
   }
 
-  finalizadores() {
+  getFinalizadores() {
     return axios.get('/usuario/finalizadores');
   }
 
-  usuario(id) {
+  getUsuario(id) {
     return axios.get(`/usuario/${id}`);
   }
 

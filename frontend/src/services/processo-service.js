@@ -1,16 +1,20 @@
 import axios from 'axios';
 
 class ProcessoService {
-  todos() {
+  getTodos() {
     return axios.get('processo/todos');
   }
 
-  processo(id) {
+  getProcesso(id) {
     return axios.get(`/processo/${id}`);
   }
 
-  pareceres(id) {
+  getPareceres(id) {
     return axios.get(`/processo/pareceres/${id}`);
+  }
+
+  deletar(id) {
+    return axios.delete(`/processo/deletar/${id}`);
   }
 
   salvar(values) {

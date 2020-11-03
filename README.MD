@@ -38,13 +38,13 @@ Procuramos desenvolvedor versátil para resolver os mais diversos problemas, que
 - Desenvolver uma aplicação web responsável por gerenciar processos.
 - *Soluções parcias serão aceitas.*
 - Visão de administrador
-	- Incluir, excluir, atualizar e visualizar usuários,
+	- Incluir, excluir, atualizar e visualizar usuários = OK
 - Visão de usuário-triador
-	- Incluir e visualizar processos,
-	- Atribuir um ou mais usuários a realizar um parecer sobre um processo,
+	- Incluir e visualizar processos = OK
+	- Atribuir um ou mais usuários a realizar um parecer sobre um processo = OK
 - Visão de usuário-finalizador
-	- Visualizar processos pendentes de parecer.
-	- Incluir o parecer sobre o processo.
+	- Visualizar processos pendentes de parecer = OK
+	- Incluir o parecer sobre o processo = OK
 
 
 ### Escopo do desafio

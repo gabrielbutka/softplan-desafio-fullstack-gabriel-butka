@@ -3,7 +3,7 @@
    "sourceLocale": "pt-br",
    "catalogs": [{
       "path": "src/locales/{locale}/messages",
-      "include": ["src"]
+      "include": ["src/"]
    }],
    "format": "po"
 }

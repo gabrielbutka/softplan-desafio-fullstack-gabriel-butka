@@ -26,7 +26,10 @@ const Layout = ({ title, subtitle, menuKey, onBack, children }) => (
             );
           })}
           <Menu.Divider />
-          <Menu.Item key="logout" icon={<LogoutOutlined />}>
+          <Menu.Item
+            key="logout"
+            onClick={() => AuthService.logout()}
+            icon={<LogoutOutlined />}>
             <Trans>Logout</Trans>
           </Menu.Item>
         </Menu>
@@ -40,7 +43,7 @@ const Layout = ({ title, subtitle, menuKey, onBack, children }) => (
             extra={[
               <Space>
                 <Typography.Text type="secondary">
-                  {AuthService.getUser().username}
+                  {AuthService.getUserName()}
                 </Typography.Text>
                 <Avatar size="small" icon={<UserOutlined />} />
               </Space>,

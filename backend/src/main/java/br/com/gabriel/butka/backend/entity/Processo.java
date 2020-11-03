@@ -19,6 +19,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -44,9 +45,9 @@ public class Processo extends BaseEntity {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private StatusProcesso status;
+    private StatusProcesso status = StatusProcesso.PENDENTE;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     @JoinTable(name = "processo_interessado",
             inverseJoinColumns = @JoinColumn(name = "usuario_id"),
             joinColumns = @JoinColumn(name = "processo_id"))
@@ -55,12 +56,17 @@ public class Processo extends BaseEntity {
     @OneToMany(mappedBy = "processo", cascade = CascadeType.ALL)
     private List<Parecer> pareceres = new ArrayList<>();
 
+    public String getNomesInteressados() {
+        return interessados.stream().map(Usuario::getNome)
+                .collect(Collectors.joining(", "));
+    }
+
     public boolean isPendente() {
         return status.isPendente();
     }
 
     public boolean temParecer(Usuario usuario) {
-        return pareceres.stream().anyMatch(parecer -> parecer.getUsuario().equals(usuario));
+        return pareceres.stream().anyMatch(p -> p.getUsuario().equals(usuario));
     }
 
     public boolean temInteressado(Usuario usuario) {
@@ -68,7 +74,7 @@ public class Processo extends BaseEntity {
     }
 
     public boolean temParecerPendente() {
-        return interessados.stream().anyMatch(interessado -> !temParecer(interessado));
+        return interessados.stream().anyMatch(i -> !temParecer(i));
     }
 
     public void addParecer(Parecer parecer) {
