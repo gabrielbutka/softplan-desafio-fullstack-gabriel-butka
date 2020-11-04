@@ -109,7 +109,10 @@ const ProcessoForm = ({ match, history }) => {
                 <TagStatus status={processo.status} />
               </Form.Item>
             )}
-            <Form.Item name="interessados" label={i18n._(t`Interessados`)}>
+            <Form.Item
+              name="interessados"
+              label={i18n._(t`Interessados`)}
+              rules={[{ required: true }]}>
               <Select
                 mode="multiple"
                 filterOption={onFiltrarUsuarios}

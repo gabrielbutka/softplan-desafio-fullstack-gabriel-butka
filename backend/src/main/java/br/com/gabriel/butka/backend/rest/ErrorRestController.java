@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -24,6 +25,13 @@ public class ErrorRestController {
     @ExceptionHandler({AccessDeniedException.class})
     public ResponseEntity<ErrorResponse> handleAccessDanied(HttpServletRequest request, Exception exception) {
         var message = Translator.get("access.danied.exception");
+        var response = new ErrorResponse(HttpStatus.UNAUTHORIZED, request.getServletPath(), message);
+        return ResponseEntity.status(response.getStatus()).body(response);
+    }
+
+    @ExceptionHandler({InternalAuthenticationServiceException.class})
+    public ResponseEntity<ErrorResponse> handleInternalAuthentication(HttpServletRequest request, Exception exception) {
+        var message = Translator.get("internal.auth.exception");
         var response = new ErrorResponse(HttpStatus.UNAUTHORIZED, request.getServletPath(), message);
         return ResponseEntity.status(response.getStatus()).body(response);
     }

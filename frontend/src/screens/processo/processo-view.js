@@ -34,7 +34,7 @@ const ProcessoView = ({ match, history }) => {
         setLoading(false);
       }
     });
-  }, [id, setLoading, setProcesso]);
+  }, [id, isPodeVerPareceres, setLoading, setProcesso]);
 
   const onMenuBack = () => {
     const route = Routes.PROCESSO_LISTAR;
@@ -75,6 +75,13 @@ const ProcessoView = ({ match, history }) => {
                 </Col>
                 <Col>
                   <TagStatus status={processo.status} />
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={24}>
+                  <Typography.Paragraph type="secondary">
+                    {i18n._(t`Por: ${processo.usuario.nome}`)}
+                  </Typography.Paragraph>
                 </Col>
               </Row>
               <Row>

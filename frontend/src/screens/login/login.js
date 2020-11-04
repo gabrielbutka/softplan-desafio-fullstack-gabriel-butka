@@ -49,7 +49,6 @@ const Login = () => {
                   <Form.Item
                     name="email"
                     label={i18n._(t`E-mail`)}
-                    initialValue="@softplan.com.br"
                     rules={[{ required: true, type: 'email' }]}>
                     <Input />
                   </Form.Item>

@@ -25,7 +25,13 @@ const successResponseInterceptor = response => {
   return data;
 };
 
-const errorResponseInterceptor = ({ response }) => {
+const errorResponseInterceptor = error => {
+  const { response } = error;
+
+  if (!Boolean(response)) {
+    window.location.href = '/error';
+  }
+
   const { data } = response;
   const { status, message } = data;
 

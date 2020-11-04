@@ -77,11 +77,15 @@ public class Processo extends BaseEntity {
         return interessados.stream().anyMatch(i -> !temParecer(i));
     }
 
-    public void addParecer(Parecer parecer) {
+    public void adicionarParecer(Parecer parecer) {
         pareceres.add(parecer);
         if (!temParecerPendente()) {
             finalizar();
         }
+    }
+
+    public void removerInteressado(Usuario usuario) {
+        interessados.remove(usuario);
     }
 
     public void finalizar() {

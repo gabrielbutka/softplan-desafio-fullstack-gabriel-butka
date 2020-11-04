@@ -36,6 +36,13 @@ class AuthService {
       : [];
   }
 
+  isSameUser(usuario) {
+    return (
+      this.getUserName() === usuario ||
+      (usuario && this.getUserName() === usuario.email)
+    );
+  }
+
   getUserName() {
     return this.isLogged() ? this.getUser().username : null;
   }

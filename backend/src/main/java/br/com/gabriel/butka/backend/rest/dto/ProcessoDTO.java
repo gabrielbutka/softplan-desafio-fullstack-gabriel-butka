@@ -19,6 +19,7 @@ public class ProcessoDTO {
     private EnumDTO status;
     private String criacao;
     private String nomesInteressados;
+    private UsuarioDTO usuario;
     private boolean editavel;
     private List<InteressadoDTO> interessados;
 
@@ -28,8 +29,9 @@ public class ProcessoDTO {
         dto.setAssunto(processo.getAssunto());
         dto.setDescricao(processo.getDescricao());
         dto.setStatus(EnumDTO.build(processo.getStatus()));
-        dto.setNomesInteressados(processo.getNomesInteressados());
         dto.setCriacao(Utils.formatDate(processo.getCriacao()));
+        dto.setNomesInteressados(processo.getNomesInteressados());
+        dto.setUsuario(UsuarioDTO.build(processo.getUsuario()));
         dto.setInteressados(InteressadoDTO.build(processo));
         dto.setEditavel(processo.getStatus().isPendente());
         return dto;

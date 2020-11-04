@@ -35,12 +35,12 @@ public class ProcessoService extends BaseService<Processo, ProcessoRepository> {
         if (usuario.getTipo().isTriador()) {
             return repository.findAllByUsuario(usuario);
         }
-        return findAllPendentesByUsuario(usuario);
+        return findAllPendentesByInteressado(usuario);
     }
 
-    public List<Processo> findAllPendentesByUsuario(Usuario usuario) {
+    public List<Processo> findAllPendentesByInteressado(Usuario interessado) {
         return repository.findAllByStatus(StatusProcesso.PENDENTE).stream()
-                .filter(p -> p.temInteressado(usuario) && !p.temParecer(usuario))
+                .filter(p -> p.temInteressado(interessado) && !p.temParecer(interessado))
                 .collect(Collectors.toList());
     }
 
@@ -70,7 +70,7 @@ public class ProcessoService extends BaseService<Processo, ProcessoRepository> {
         parecer.setDescricao(input.getDescricao());
         parecer.setUsuario(usuarioLogado);
 
-        processo.addParecer(parecer);
+        processo.adicionarParecer(parecer);
         save(processo);
 
         return parecer;

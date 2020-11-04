@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, Col, Input, Modal, Row, Space, Table} from 'antd';
 import Layout from '../layout';
-import {UsuarioService} from '../../services';
+import {AuthService, UsuarioService} from '../../services';
 import {Menus, Routes} from '../../constants';
 import {Utils} from '../../utils';
 import {UserAddOutlined} from '@ant-design/icons';
@@ -102,6 +102,7 @@ const UsuarioList = ({ history }) => {
           <Row>
             <Col xs={24}>
               <Table
+                pagination={{ pageSize: 10 }}
                 dataSource={Utils.dataFilter(filtro, usuarios)}
                 loading={loading}>
                 <Table.Column
@@ -134,34 +135,41 @@ const UsuarioList = ({ history }) => {
                   key="acoes"
                   title={i18n._(t`Acões`)}
                   dataIndex="acoes"
-                  render={(value, usuario) => (
-                    <Space size="1">
-                      <Button
-                        type="link"
-                        onClick={() => onEditar(usuario)}
-                        htmlType="link">
-                        <Trans>Editar</Trans>
-                      </Button>
+                  render={(value, usuario) => {
+                    const isUsuarioLogado = AuthService.isSameUser(usuario);
 
-                      {usuario && usuario.ativo && (
+                    return (
+                      <Space size="1">
                         <Button
                           type="link"
-                          onClick={() => onConfirmarInativar(usuario)}
+                          disabled={!usuario.editavel || isUsuarioLogado}
+                          onClick={() => onEditar(usuario)}
                           htmlType="link">
-                          <Trans>Inativar</Trans>
+                          <Trans>Editar</Trans>
                         </Button>
-                      )}
 
-                      {usuario && !usuario.ativo && (
-                        <Button
-                          type="link"
-                          onClick={() => onConfirmarAtivar(usuario)}
-                          htmlType="link">
-                          <Trans>Ativar</Trans>
-                        </Button>
-                      )}
-                    </Space>
-                  )}
+                        {usuario && usuario.ativo && (
+                          <Button
+                            type="link"
+                            disabled={!usuario.editavel || isUsuarioLogado}
+                            onClick={() => onConfirmarInativar(usuario)}
+                            htmlType="link">
+                            <Trans>Inativar</Trans>
+                          </Button>
+                        )}
+
+                        {usuario && !usuario.ativo && (
+                          <Button
+                            type="link"
+                            disabled={!usuario.editavel || isUsuarioLogado}
+                            onClick={() => onConfirmarAtivar(usuario)}
+                            htmlType="link">
+                            <Trans>Ativar</Trans>
+                          </Button>
+                        )}
+                      </Space>
+                    );
+                  }}
                 />
               </Table>
             </Col>

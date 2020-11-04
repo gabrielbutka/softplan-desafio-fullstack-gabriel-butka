@@ -98,6 +98,7 @@ const ProcessoList = ({ history }) => {
           <Row>
             <Col xs={24}>
               <Table
+                pagination={{ pageSize: 10 }}
                 dataSource={Utils.dataFilter(filtro, processos)}
                 loading={loading}>
                 <Table.Column
